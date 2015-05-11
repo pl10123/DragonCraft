@@ -1,12 +1,15 @@
 package com.pl10123.dragoncraft;
 
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.pl10123.dragoncraft.entity.EntityDragKeeper;
+import com.pl10123.dragoncraft.gui.ManaBar;
 import com.pl10123.dragoncraft.handler.EntityHandler;
 import com.pl10123.dragoncraft.handler.ModEventHandler;
 import com.pl10123.dragoncraft.proxy.CommonProxy;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
@@ -42,6 +45,10 @@ public class Core {
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent e){
 		MinecraftForge.EVENT_BUS.register(new ModEventHandler());
+		
+		if(FMLCommonHandler.instance().getEffectiveSide().isClient()){
+			MinecraftForge.EVENT_BUS.register(new ManaBar(Minecraft.getMinecraft()));
+		}
 	}
 	
 	

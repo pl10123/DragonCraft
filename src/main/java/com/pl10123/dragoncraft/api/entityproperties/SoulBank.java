@@ -1,4 +1,4 @@
-package com.pl10123.dragoncraft.api.soulbank;
+package com.pl10123.dragoncraft.api.entityproperties;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
