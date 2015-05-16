@@ -16,6 +16,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 
 @Mod(name=Core.MODNAME, modid=Core.MODID, version=Core.VERSION )
@@ -40,6 +41,7 @@ public class Core {
 		
 		proxy.registerRenderThings();
 		EntityHandler.registerEntities(EntityDragKeeper.class, "DragonKeeper");
+		GameRegistry.registerItem(new Testitem(), "testitem");
 	}
 	
 	@EventHandler

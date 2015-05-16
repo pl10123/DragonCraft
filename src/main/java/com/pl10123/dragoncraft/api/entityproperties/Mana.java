@@ -61,4 +61,17 @@ public class Mana implements IExtendedEntityProperties{
 		return this.currentMana;
 	}
 
+	public boolean consumeMana(int i) {
+		boolean sufficient = i <= this.currentMana;
+		// Consume the amount anyway; if it's more than the player's current mana,
+		// mana will be set to 0
+		this.currentMana -= (i < this.currentMana ? i : this.currentMana);
+		// Return if the player had enough mana
+		return sufficient;
+		}
+
+	public void replenishMana() {
+		this.currentMana = this.maxMana;
+	}
+
 }
