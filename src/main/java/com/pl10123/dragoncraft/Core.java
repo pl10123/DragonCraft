@@ -1,12 +1,14 @@
 package com.pl10123.dragoncraft;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.pl10123.dragoncraft.entity.EntityDragKeeper;
 import com.pl10123.dragoncraft.gui.ManaBar;
 import com.pl10123.dragoncraft.handler.EntityHandler;
 import com.pl10123.dragoncraft.handler.ModEventHandler;
+import com.pl10123.dragoncraft.network.packet.PacketPipeline;
 import com.pl10123.dragoncraft.proxy.CommonProxy;
 
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -25,6 +27,8 @@ public class Core {
 	public static final String VERSION = "0.1";
 	public static final String MODID = "dragoncraft";
 	
+	public static final PacketPipeline packetPipeline = new PacketPipeline();
+	
 	@SidedProxy(clientSide="com.pl10123.dragoncraft.proxy.CommonProxy", serverSide="")
 	public static CommonProxy proxy;
 	
@@ -41,7 +45,8 @@ public class Core {
 		
 		proxy.registerRenderThings();
 		EntityHandler.registerEntities(EntityDragKeeper.class, "DragonKeeper");
-		GameRegistry.registerItem(new Testitem(), "testitem");
+		GameRegistry.registerItem(new Testitem().setCreativeTab(CreativeTabs.tabBlock).setUnlocalizedName("testitem"), "testitem");
+		packetPipeline.initialise();
 	}
 	
 	@EventHandler
@@ -51,6 +56,7 @@ public class Core {
 		if(FMLCommonHandler.instance().getEffectiveSide().isClient()){
 			MinecraftForge.EVENT_BUS.register(new ManaBar(Minecraft.getMinecraft()));
 		}
+		packetPipeline.postInitialise();
 	}
 	
 	

@@ -1,7 +1,16 @@
 package com.pl10123.dragoncraft.api.entityproperties;
 
+import java.io.DataOutputStream;
+
+import org.apache.commons.io.output.ByteArrayOutputStream;
+
+import com.pl10123.dragoncraft.Core;
+import com.pl10123.dragoncraft.network.packet.SyncPlayerProperties;
+import com.pl10123.dragoncraft.proxy.CommonProxy;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
@@ -67,11 +76,26 @@ public class Mana implements IExtendedEntityProperties{
 		// mana will be set to 0
 		this.currentMana -= (i < this.currentMana ? i : this.currentMana);
 		// Return if the player had enough mana
+		this.loadProxyData(this.entity);
 		return sufficient;
 		}
 
 	public void replenishMana() {
 		this.currentMana = this.maxMana;
 	}
+	
+	private static final String getSaveKey(EntityPlayer player) {
+		// no longer a username field, so use the command sender name instead:
+		return player.getCommandSenderName() + ":" + Property;
+		}
+
+		public static final void loadProxyData(EntityPlayer player) {
+		Mana playerData = Mana.get(player);
+		NBTTagCompound savedData = CommonProxy.getEntityData(getSaveKey(player));
+		if (savedData != null) { playerData.loadNBTData(savedData); }
+		// we are replacing the entire sync() method with a single line; more on packets later
+		// data can by synced just by sending the appropriate packet, as everything is handled internally by the packet class
+		Core.packetPipeline.sendTo(new SyncPlayerProperties(player), (EntityPlayerMP) player);
+		}
 
 }
