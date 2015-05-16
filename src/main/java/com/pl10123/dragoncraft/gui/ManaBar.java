@@ -39,18 +39,18 @@ public class ManaBar extends Gui{
 			return;
 		}
 		
-		int x = 2;
-		int y = 2;
+		int x = 4;
+		int y = event.resolution.getScaledHeight() - 10;
 		
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glDisable(GL11.GL_LIGHTING);
 		
 		this.mc.getTextureManager().bindTexture(rsc);
 		
-		this.drawTexturedModalRect(x, y, 0, 0, 50, 4);
+		this.drawTexturedModalRect(x, y, 0, 0, 102, 5);
 		
-		int manaWidth = (int) (((float) property.getcurrentMana() / property.getMaxMana()) * 50);
-		this.drawTexturedModalRect(x, y+1, 0, 4, manaWidth, 2);
+		int manaWidth = (int) (((float) property.getcurrentMana() / property.getMaxMana()) * 100);
+		this.drawTexturedModalRect(x, y, 0, 5, manaWidth, 5);
 	}
 	
 	

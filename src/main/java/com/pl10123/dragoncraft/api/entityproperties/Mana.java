@@ -17,12 +17,13 @@ import net.minecraftforge.common.IExtendedEntityProperties;
 
 public class Mana implements IExtendedEntityProperties{
 	
-	
+	public static final int MANA_WATHCER = 22;
 	public static final String Property = "Mana";
 	
 	private final EntityPlayer entity;
 	
-	private int currentMana, maxMana;
+	private int maxMana;
+	private int currentMana;
 	
 	public Mana(EntityPlayer entity){
 		this.entity = entity;
