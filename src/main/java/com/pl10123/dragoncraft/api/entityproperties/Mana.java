@@ -83,6 +83,7 @@ public class Mana implements IExtendedEntityProperties{
 
 	public void replenishMana() {
 		this.currentMana = this.maxMana;
+		this.loadProxyData(this.entity);
 	}
 	
 	private static final String getSaveKey(EntityPlayer player) {
