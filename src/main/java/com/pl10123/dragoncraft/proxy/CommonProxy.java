@@ -3,6 +3,10 @@ package com.pl10123.dragoncraft.proxy;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.pl10123.dragoncraft.Core;
+import com.pl10123.dragoncraft.handler.GuiHandler;
+
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -35,6 +39,9 @@ public class CommonProxy {
 	public static void storeEntityData(String name, NBTTagCompound compound)
 	{
 	extendedEntityData.put(name, compound);
+	}
+
+	public void init() {
 	}
 
 }
