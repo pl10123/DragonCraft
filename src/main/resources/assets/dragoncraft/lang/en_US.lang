@@ -1,3 +1,5 @@
+itemGroup.DragonCraft=DragonCraft
 
-
-item.dragoncraft.DragonGuide=Dragon Guide
+item.DragonGuide.name=Dragon Guide
+item.draconicIngot.name=Draconic Ingot
+item.testitem.name=Test Item

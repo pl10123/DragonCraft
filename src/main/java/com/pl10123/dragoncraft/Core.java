@@ -8,6 +8,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.pl10123.dragoncraft.api.guide.EntryCategory;
 import com.pl10123.dragoncraft.api.guide.GuideHelper;
+import com.pl10123.dragoncraft.block.ModBlocks;
 import com.pl10123.dragoncraft.entity.EntityDragKeeper;
 import com.pl10123.dragoncraft.gui.ManaBar;
 import com.pl10123.dragoncraft.handler.EntityHandler;
@@ -58,15 +59,18 @@ public class Core {
 			
 			@Override
 			public Item getTabIconItem() {
-				return Items.apple; //plz change  soonnnnnnn
+				return ModItems.draconicIngot; //plz change  soonnnnnnn
 			}
 		};
 		ModItems.initItems();
 		ModItems.registerItems();
 		
+		ModBlocks.initBlocks();
+		ModBlocks.registerBlocks();
+		
 		proxy.registerRenderThings();
 		proxy.init();
-		EntityHandler.registerEntities(EntityDragKeeper.class, "DragonKeeper");
+		//EntityHandler.registerEntities(EntityDragKeeper.class, "DragonKeeper");
 		GameRegistry.registerItem(new Testitem().setCreativeTab(dragonTab).setUnlocalizedName("testitem"), "testitem");
 		packetPipeline.initialise();
 		

@@ -1,10 +1,10 @@
 package com.pl10123.dragoncraft.handler;
 
-import com.pl10123.dragoncraft.ModConstants;
-import com.pl10123.dragoncraft.gui.guide.GuiGuideMain;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+
+import com.pl10123.dragoncraft.ModConstants;
+
 import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler{
@@ -22,7 +22,7 @@ public class GuiHandler implements IGuiHandler{
 			int x, int y, int z) {
 		switch(ID){
 			case ModConstants.GUI_GUIDE:
-				return new GuiGuideMain(player);
+			//	return new GuiGuideMain(player);
 		}
 		return null;
 	}
