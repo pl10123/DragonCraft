@@ -59,7 +59,7 @@ public class Core {
 			
 			@Override
 			public Item getTabIconItem() {
-				return ModItems.draconicIngot; //plz change  soonnnnnnn
+				return ModItems.draconicIngot;
 			}
 		};
 		ModItems.initItems();
@@ -88,6 +88,8 @@ public class Core {
 			MinecraftForge.EVENT_BUS.register(new ManaBar(Minecraft.getMinecraft()));
 		}
 		packetPipeline.postInitialise();
+		
+		ModRecipes.registerRecipes();
 	}
 	
 	

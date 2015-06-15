@@ -17,12 +17,13 @@ public class DraconicOre extends Block {
 
 	protected DraconicOre() {
 		
-		super(Material.ground);
+		super(Material.rock);
 		this.setHarvestLevel("pickaxe", 2);
 		this.setCreativeTab(Core.dragonTab);
 		this.setBlockName("DraconicOre");
 		this.setHardness(4.0F);
 		this.setResistance(3.0F);
+		this.setStepSound(soundTypeStone);
 	}
 	
 
