@@ -30,19 +30,22 @@ public class DraconicPedestal extends BlockContainer{
 		}
 		TilePedestal te = (TilePedestal) world.getTileEntity(x, y, z);
 		
-		if(player.getCurrentEquippedItem() != null){
-			ItemStack iStack = player.getCurrentEquippedItem().copy();
-			iStack.stackSize = 1;
-			te.setInventorySlotContents(0, iStack);
-			player.getCurrentEquippedItem().stackSize -=1;
-			System.out.println("You added an itemStack of: " + iStack.getDisplayName());
-			if (player.getCurrentEquippedItem().stackSize == 0){
-				player.setCurrentItemOrArmor(0, null);
+		if(te.getStackInSlot(0) == null){
+			if(player.getCurrentEquippedItem() != null){
+				ItemStack iStack = player.getCurrentEquippedItem().copy();
+				iStack.stackSize = 1;
+				te.setInventorySlotContents(0, iStack);
+				player.getCurrentEquippedItem().stackSize -=1;
+				System.out.println("You added an itemStack of: " + iStack.getDisplayName());
+				if (player.getCurrentEquippedItem().stackSize == 0){
+					player.setCurrentItemOrArmor(0, null);
+				}
+				
+				player.inventory.markDirty();
+				return true;
 			}
 			
-			player.inventory.markDirty();
-			return true;
-		}
+		}else
 		if(player.isSneaking()){
 			if(player.getCurrentEquippedItem() == null){
 				if(te.getStackInSlot(0) != null){
