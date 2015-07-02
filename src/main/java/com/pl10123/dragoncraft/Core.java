@@ -17,7 +17,6 @@ import com.pl10123.dragoncraft.handler.ModEventHandler;
 import com.pl10123.dragoncraft.item.ModItems;
 import com.pl10123.dragoncraft.network.packet.PacketPipeline;
 import com.pl10123.dragoncraft.proxy.CommonProxy;
-import com.pl10123.dragoncraft.tileentity.TilePedestal;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -39,7 +38,7 @@ public class Core {
 	
 	public static final PacketPipeline packetPipeline = new PacketPipeline();
 	
-	@SidedProxy(clientSide="com.pl10123.dragoncraft.proxy.ClientProxy", serverSide="com.pl10123.dragoncraft.proxy.CommonProxy")
+	@SidedProxy(clientSide="com.pl10123.dragoncraft.proxy.CommonProxy", serverSide="")
 	public static CommonProxy proxy;
 	
 	@Mod.Instance
@@ -50,6 +49,12 @@ public class Core {
 	public static GuiHandler guiHandler = new GuiHandler();
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent e){
+		
+	}
+	
+	
+	@EventHandler
+	public static void init(FMLInitializationEvent e){
 		dragonTab = new CreativeTabs("DragonCraft") {
 			
 			@Override
@@ -62,28 +67,17 @@ public class Core {
 		
 		ModBlocks.initBlocks();
 		ModBlocks.registerBlocks();
-		System.out.println("Init TileEntities");
-		GameRegistry.registerTileEntity(TilePedestal.class, "PedestalEntity");
 		
-	}
-	
-	
-	@EventHandler
-	public static void init(FMLInitializationEvent e){
-		
-		System.out.println("Starting init Phase");
-		//proxy.init();
-		
-		
-		//proxy.registerRenderThings();
+		proxy.registerRenderThings();
+		proxy.init();
 		//EntityHandler.registerEntities(EntityDragKeeper.class, "DragonKeeper");
 		GameRegistry.registerItem(new Testitem().setCreativeTab(dragonTab).setUnlocalizedName("testitem"), "testitem");
 		packetPipeline.initialise();
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(modInstance, guiHandler);
 		
-		//EntryCategory test = new EntryCategory("TEST", 1);
-		//GuideHelper.registerCattoList(test);
+		EntryCategory test = new EntryCategory("TEST", 1);
+		GuideHelper.registerCattoList(test);
 	}
 	
 	@EventHandler

@@ -86,16 +86,6 @@ public class Mana implements IExtendedEntityProperties{
 		this.loadProxyData(this.entity);
 	}
 	
-	public void addMana(int amount){
-		int newMana = this.currentMana + amount;
-		if(newMana >= this.maxMana){
-			this.currentMana = this.maxMana;
-		} else {
-			this.currentMana = newMana;
-		}
-		this.loadProxyData(this.entity);
-	}
-	
 	private static final String getSaveKey(EntityPlayer player) {
 		// no longer a username field, so use the command sender name instead:
 		return player.getCommandSenderName() + ":" + Property;

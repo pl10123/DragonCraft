@@ -14,7 +14,6 @@ public class ModItems {
 	
 	
 	public static void initItems(){
-		System.out.println("Initialising items");
 		dragonGuide = new ItemGuide().setUnlocalizedName("DragonGuide");
 		draconicIngot = new ItemDraconicIngot("draconicIngot");
 	}
