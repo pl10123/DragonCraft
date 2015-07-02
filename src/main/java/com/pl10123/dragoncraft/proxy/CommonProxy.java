@@ -5,9 +5,11 @@ import java.util.Map;
 
 import com.pl10123.dragoncraft.Core;
 import com.pl10123.dragoncraft.handler.GuiHandler;
+import com.pl10123.dragoncraft.tileentity.TilePedestal;
 
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -42,6 +44,12 @@ public class CommonProxy {
 	}
 
 	public void init() {
+		System.out.println("INIT Proxy");
+		registerTileEntities();
+	}
+	
+	public void registerTileEntities(){
+		
 	}
 
 }

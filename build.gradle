@@ -9,6 +9,8 @@ buildscript {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
+		
+		
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
@@ -40,6 +42,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
+	
 }
 
 processResources
@@ -60,4 +63,12 @@ processResources
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+}
+
+repositories {
+  maven { url 'http://tehnut.info/maven/' }
+}
+
+dependencies {
+  compile "info.amerifrance.guideapi:Guide-API:1.7.10-1.0-15:deobf"
 }
