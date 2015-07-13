@@ -62,8 +62,8 @@ public class Core {
 		
 		ModBlocks.initBlocks();
 		ModBlocks.registerBlocks();
-		System.out.println("Init TileEntities");
-		GameRegistry.registerTileEntity(TilePedestal.class, "PedestalEntity");
+		ModBlocks.registerTiles();
+		
 		
 	}
 	
@@ -75,7 +75,7 @@ public class Core {
 		//proxy.init();
 		
 		
-		//proxy.registerRenderThings();
+		proxy.registerRenderThings();
 		//EntityHandler.registerEntities(EntityDragKeeper.class, "DragonKeeper");
 		GameRegistry.registerItem(new Testitem().setCreativeTab(dragonTab).setUnlocalizedName("testitem"), "testitem");
 		packetPipeline.initialise();

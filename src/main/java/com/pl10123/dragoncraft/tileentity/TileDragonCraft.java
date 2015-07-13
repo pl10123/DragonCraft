@@ -40,6 +40,10 @@ public class TileDragonCraft extends TileEntity{
 		super.onDataPacket(net, packet);
 		readCustomNBT(packet.func_148857_g());
 	}
+	
+	public void updateEntity(){
+		super.updateEntity();
+	}
 
 }
 

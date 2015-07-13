@@ -3,6 +3,7 @@ package com.pl10123.dragoncraft.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -17,11 +18,34 @@ public class DraconicPedestal extends BlockContainer{
 	public DraconicPedestal() {
 		super(Material.glass);
 		setCreativeTab(Core.dragonTab);
-		setBlockName("draconicpedestal");
+		setBlockName("draconicPedestal");
 		
 	}
 	
 	
+
+	@Override
+	public void registerBlockIcons(IIconRegister reg) {
+		this.blockIcon = reg.registerIcon(Core.MODID + ":" + this.getUnlocalizedName().substring(5));
+	}
+
+
+
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
+	
+	
+
+
+
+	@Override
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
+
+
 
 	@Override
 	public boolean onBlockActivated(World world, int x,	int y, int z, EntityPlayer player,int i, float f, float f1,float f2) {
